@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Omniauth</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    
+
+
+
+
+<% if current_user %>
+    Welcome, <%= current_user.name %>!
+<%= link_to "Sign Out", sign_out_path %>
+  <% else %>
+<div class="jumbotron">
+<center><h3>Login to my app from following providers</h3></center>
+<ul>
+ <center><li> <a href="/auth/facebook" class="auth_provider">
+ <%= image_tag "facebook.png", :size => "64x64", 
+  :alt => "Facebook" %></a>
+ <li> <a href="/auth/twitter" class="auth_provider">
+ <%= image_tag "twitter.png", :size => "64x64", 
+  :alt => "Twitter" %></a></li>
+ <li> <a href="/auth/google_oauth2" class="auth_provider">
+ <%= image_tag "google.jpg", :size => "64x64", 
+  :alt => "google" %></a></li></center>
+</ul>  
+</div>
+<% end %>
+
+
+  
+
+
+
+<%= yield %>
+
+</body>
+</html>
